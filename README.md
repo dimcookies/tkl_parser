@@ -7,7 +7,7 @@ The implementation has been based on comments of the user Robware on the followi
 
 https://www.reddit.com/r/ukbike/comments/29i7nt/did_anyone_else_get_the_gps_watch_from_the_aldi/
 
-For gpx file creating, gpxpy library is used
+For gpx file creation, gpxpy library is used
 
 https://github.com/tkrajina/gpxpy
 
