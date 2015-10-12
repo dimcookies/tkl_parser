@@ -28,7 +28,7 @@ def parse_record(bytes):
 	#latitude 12->15
 	lat_bytes =  bytes[12:16][::-1]	#reverse bytes	
 	res['lat'] = str(struct.unpack('>i', binascii.hexlify(bytearray(lat_bytes)).decode('hex'))[0]/10000000.0)	
-	#altitude
+	#altitude 16->17
 	alt_bytes =  bytes[16:18][::-1] #reverse bytes
 	res['alt'] = str(int(binascii.hexlify(bytearray(alt_bytes)),16))
 	return res
