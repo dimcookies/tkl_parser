@@ -39,18 +39,23 @@ Parse tkl file
 Based on Robware answer on https://www.reddit.com/r/ukbike/comments/29i7nt/did_anyone_else_get_the_gps_watch_from_the_aldi/
 
 Header (256 bytes?):
+192: int GPS record count (is this a short or int?)
+210: lap count?
 ...
 Lap data (16 bytes?):
 ...
 GPS Data (32 bytes):
 ...
-
-GPS Data starts at 256+16=272 byte
+Lap count at 210 
+GPS Data starts at 256+ lap_count * 16
 '''
 def read_file(filename):
 	f = open(filename, "rb")
 	try:
-	    f.seek(272) #skip header + lap data
+	    f.seek(210) #skip to lap count
+	    lap_count = ord(f.read(1))
+	    print lap_count
+	    f.seek(256 + lap_count * 16) #skip header + lap data * count
 	    #each record is 32 bytes
 	    bytes = f.read(32) 
 	    ar = []
