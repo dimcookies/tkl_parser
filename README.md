@@ -1,7 +1,7 @@
 # tkl_parser
 Converter for tkl files to gpx
 
-A python application to convert tkl files as stored by "GPS Master" software (name may be different based on the company). Using GPS Master you can export a track to gpx so this is useful for bulk converting of existing files.
+A python application to convert tkl files (binary format, extention .tkl http://www.file-extensions.org/tkl-file-extension) as stored by "GPS Master" software (name may be different depending on company). Using "GPS Master" you can already export a single track to gpx format so this tool is useful for bulk converting of existing saved files.
 
 The implementation has been based on comments of the user Robware on the following reddit thread 
 
