@@ -88,32 +88,32 @@ def create_gpx(records):
 	# You can add routes and waypoints, too...
 	return gpx.to_xml()
 
+if __name__ == '__main__':
+	#simple app to convert input files
+	argparser = argparse.ArgumentParser('tkl-parser.py')
+	argparser.add_argument('source',help="File or directory to read from")
 
-#simple app to convert input files
-argparser = argparse.ArgumentParser('tkl-parser.py')
-argparser.add_argument('source',help="File or directory to read from")
+	source_files = []
 
-source_files = []
+	if os.path.isdir(argparser.parse_args().source):
+		source_files = map(lambda file: os.path.join(argparser.parse_args().source, file),filter(lambda file: file.endswith(".tkl"), os.listdir(argparser.parse_args().source)))
+	else:
+		source_files.append(argparser.parse_args().source)
 
-if os.path.isdir(argparser.parse_args().source):
-	source_files = map(lambda file: os.path.join(argparser.parse_args().source, file),filter(lambda file: file.endswith(".tkl"), os.listdir(argparser.parse_args().source)))
-else:
-	source_files.append(argparser.parse_args().source)
-
-for file in source_files:
-	out_file = ''
-	try:
-		print "Converting:" + file,
-		out_file = open(file+".gpx","w")
-		out_file.write(create_gpx(read_file(file)))
-		print "Done" 
-	except:	
-		print "Failed"
-	finally:
-		if out_file:	
-			out_file.close()
+	for file in source_files:
+		out_file = ''
+		try:
+			print "Converting:" + file,
+			out_file = open(file+".gpx","w")
+			out_file.write(create_gpx(read_file(file)))
+			print "Done" 
+		except:	
+			print "Failed"
+		finally:
+			if out_file:	
+				out_file.close()
+			
 		
-	
 
 
 
