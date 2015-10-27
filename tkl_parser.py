@@ -54,7 +54,6 @@ def read_file(filename):
 	try:
 	    f.seek(210) #skip to lap count
 	    lap_count = ord(f.read(1))
-	    print lap_count
 	    f.seek(256 + lap_count * 16) #skip header + lap data * count
 	    #each record is 32 bytes
 	    bytes = f.read(32) 

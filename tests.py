@@ -29,6 +29,10 @@ class TestStringMethods(unittest.TestCase):
 		self.assertEquals(res['lon'],"-2.0725583")
 		self.assertEquals(res['alt'],"203")
 		self.assertEquals(res['date'].date(),datetime.strptime("2014-07-02T17:35:43Z",'%Y-%m-%dT%H:%M:%SZ').date()) 
+	
+	def test_read_file(self):
+		res = tkl_parser.read_file('sample.tkl')
+		self.assertEquals(len(res),2436)
 
 
 def parse_trkpt(point):
